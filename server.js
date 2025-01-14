@@ -1,6 +1,8 @@
 const express = require('express');
 const dotenv = require('dotenv');
 dotenv.config({ path: './config/.env' });
+const mongoose = require('mongoose');
+require('./config/db');
 
 
 // Charger les variables d'environnement
@@ -15,6 +17,11 @@ app.use(express.json());
 app.get('/', (req, res) => {
   res.send('API Wanderly est en ligne !');
 });
+
+
+//routes
+const userRoutes = require('./routes/userRoutes');
+app.use('/api/users', userRoutes);
 
 
 //server 

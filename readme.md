@@ -2,6 +2,27 @@ Installation
 npm init -y
 npm i --s express nodemon dotenv
 
+Créer dossier config 
+.env
+
+Gestion utilisateurs
+npm install mongoose
+
+MongoCompass
+connexion au cluster 
+config > db.js + .env
+npm install bcryptjs jsonwebtoken
+
+Créer un modèle utilisateur
+npm install validator
+
+
+
+
+Installer Postman
+npm i -s body-parser
+Le Body Parser sert pour traiter les requetes
+
 
 Coté  client
 npx create-react-app client
