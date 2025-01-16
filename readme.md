@@ -30,3 +30,5 @@ cd .\client\
 npm i -s node-sass react-router-dom 
 npm i -s axios
 npm i -s dotenv
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init
