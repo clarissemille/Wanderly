@@ -3,6 +3,8 @@ const dotenv = require('dotenv');
 dotenv.config({ path: './config/.env' });
 const mongoose = require('mongoose');
 require('./config/db');
+const cors = require('cors');
+
 
 
 // Charger les variables d'environnement
@@ -17,6 +19,16 @@ app.use(express.json());
 app.get('/', (req, res) => {
   res.send('API Wanderly est en ligne !');
 });
+
+const corsOptions = {
+  origin: process.env.CLIENT_URL,
+  credentials: true,
+  'allowedHeaders': ['sessionId', 'Content-Type'],
+  'exposedHeaders': ['sessionId'],
+  'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  'preflightContinue': false
+}
+app.use(cors(corsOptions));
 
 
 //routes

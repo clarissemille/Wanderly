@@ -24,6 +24,18 @@ npm i -s body-parser
 Le Body Parser sert pour traiter les requetes
 
 
+
+Middleware
+npm i -s cookie-parser
+
+Upload les images
+npm i -s multer@2.0.0-rc.1
+
+cors
+npm i -s cors
+
+
+
 Coté  client
 npx create-react-app client
 cd .\client\ 
