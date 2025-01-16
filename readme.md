@@ -32,3 +32,8 @@ npm i -s axios
 npm i -s dotenv
 npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init
+
+Intégration de Redux pour gérer les données et afficher du contenu dynamique
+npm i -s react-redux redux redux-thunk redux-logger 
+npm install @reduxjs/toolkit
+npm i -s js-cookie
