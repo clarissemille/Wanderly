@@ -41,7 +41,7 @@ app.get('/jwtid', requireAuth, (req, res) => {
 
 //routes
 const userRoutes = require('./routes/userRoutes');
-app.use('/api/users', userRoutes);
+app.use('/api/user', userRoutes);
 
 
 //server 

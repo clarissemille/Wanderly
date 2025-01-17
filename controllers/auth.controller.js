@@ -11,10 +11,10 @@ const createToken = (id) => {
 
 
 module.exports.signUp = async(req, res) => {    
-    const{username, email, password} = req.body 
+    const{name, email, password} = req.body 
 
     try{
-        const user = await UserModel.create({username, email, password}); 
+        const user = await UserModel.create({name, email, password}); 
         res.status(201).json({ user: user._id})
     }
     catch(err){
@@ -24,10 +24,10 @@ module.exports.signUp = async(req, res) => {
 }
 
 module.exports.signIn = async (req, res) => {
-    const { username, password } = req.body
+    const { name, password } = req.body
 
     try {
-        const user = await UserModel.login(username, password); 
+        const user = await UserModel.login(name, password); 
         const token = createToken(user._id )
         res.cookie("jwt", token, { httpOnly: true, maxAge });
         res.status(200).json({user: user._id})
