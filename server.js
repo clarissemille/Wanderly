@@ -4,6 +4,8 @@ dotenv.config({ path: './config/.env' });
 const mongoose = require('mongoose');
 require('./config/db');
 const cors = require('cors');
+const {checkUser, requireAuth} = require('./middleware/authMiddleware');
+
 
 
 
@@ -29,6 +31,12 @@ const corsOptions = {
   'preflightContinue': false
 }
 app.use(cors(corsOptions));
+
+// jwt
+app.get('*', checkUser);
+app.get('/jwtid', requireAuth, (req, res) => {
+  res.status(200).send(res.locals.user._id)
+});
 
 
 //routes

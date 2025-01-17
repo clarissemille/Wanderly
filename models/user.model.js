@@ -47,10 +47,23 @@ const userSchema = new mongoose.Schema({
   });
 
 // Hash du mot de passe avant de sauvegarder
-userSchema.pre('save', async function (next) {
-  if (!this.isModified('password')) return next();
-  this.password = await bcrypt.hash(this.password, 10);
+userSchema.pre("save", async function(next){
+  const salt = await bcrypt.genSalt();
+  this.password = await bcrypt.hash(this.password, salt);
   next();
-});
+})
 
-module.exports = mongoose.model('User', userSchema);
+userSchema.statics.login = async function(username, password){
+  const user = await this.findOne({ username });
+  if( user ) {
+      const auth = await bcrypt.compare(password, user.password);
+      if(auth) {
+          return user;
+      }
+      throw Error("Incorrect password");
+  }
+  throw Error ("Incorrect username")
+}
+const UserModel = mongoose.model("user", userSchema);
+
+module.exports = UserModel
