@@ -1,10 +1,13 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
 dotenv.config({ path: './config/.env' });
 const mongoose = require('mongoose');
 require('./config/db');
 const cors = require('cors');
 const {checkUser, requireAuth} = require('./middleware/authMiddleware');
+const path = require('path');
 
 
 
@@ -31,6 +34,10 @@ const corsOptions = {
   'preflightContinue': false
 }
 app.use(cors(corsOptions));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(cookieParser());
 
 // jwt
 app.get('*', checkUser);
