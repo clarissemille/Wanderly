@@ -8,6 +8,9 @@ require('./config/db');
 const cors = require('cors');
 const {checkUser, requireAuth} = require('./middleware/authMiddleware');
 const path = require('path');
+const userRoutes = require('./routes/user.routes');
+const postRoutes = require('./routes/post.routes');
+
 
 
 
@@ -47,8 +50,9 @@ app.get('/jwtid', requireAuth, (req, res) => {
 
 
 //routes
-const userRoutes = require('./routes/userRoutes');
 app.use('/api/user', userRoutes);
+app.use('/api/post', postRoutes);
+
 
 
 //server 
