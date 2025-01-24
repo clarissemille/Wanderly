@@ -33,7 +33,7 @@ module.exports.createPost = async (req, res) => {
   let fileName;
 
   // Vérifier si un fichier est bien fourni
-  if (req.file !== null) {
+  if (req.file) {
     try {
       // Vérification du type de fichier
       if (
@@ -78,7 +78,8 @@ module.exports.createPost = async (req, res) => {
   // Créer un nouveau post avec les données envoyées
   const newPost = new postModel({
     posterId: req.body.posterId,
-    message: req.body.message,
+    location: req.body.location,
+    description: req.body.description,
     picture: req.file !== null ? "./uploads/posts/" + fileName : "", // Si pas d'image, le champ restera vide
     video: req.body.video,
     likers: [],

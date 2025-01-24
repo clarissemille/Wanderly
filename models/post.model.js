@@ -5,8 +5,12 @@ const PostSchema = new mongoose.Schema(
     posterId: {
       type: String,
       required: true
-    },
-    message: {
+    }, 
+    location: {
+        type: String,
+        required: true
+      },
+    description: {
       type: String,
       trim: true,
       maxlength: 500,
