@@ -1,5 +1,5 @@
 # Utilise une image Node officielle
-FROM node:18
+FROM node:25
 
 # Définition du dossier de travail
 WORKDIR /app
