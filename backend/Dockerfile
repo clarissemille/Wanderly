@@ -16,3 +16,7 @@ EXPOSE 5000
 
 # Commande de lancement
 CMD ["npm", "run", "dev"]
+
+
+
+
